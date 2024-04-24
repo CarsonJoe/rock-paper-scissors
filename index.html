@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="rock-paper-scissors.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #record {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>Select your weapon</h1>
@@ -21,9 +31,15 @@
     <button type="button" onclick="scissors()">
         scissors
     </button>
-
-    <p id="selection"></p>
-    <h2 id="result"></h2>
+    
+    <p id="selection">.</p>
+    <h2 id="result">.</h2>
+    <div id="record">
+        <p>wlt: </p>
+        <p id="wins"></p>
+        <p id="losses"></p>
+        <p id="ties"></p>
+    </div>
     
 </body>
 </html>

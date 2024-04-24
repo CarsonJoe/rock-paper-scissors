@@ -1,30 +1,38 @@
 let selection
+let wins = 0, losses = 0, ties = 0
+let resultText, selectionText
 
 function rock() {
     selection = 0;
     result()
+    updateScreen()
 }
 
 function paper() {
     selection = 1;
     result()
+    updateScreen()
 }
 
 function scissors() {
     selection = 2;
     result()
+    updateScreen()
+}
+
+function updateContent() {
 }
 
 function selectWeapon(){
+    //0 : rock, 1 : paper, 2 : scissors
     let weapon = Math.floor(Math.random()*3);
 
     if (weapon === 0) {
-        document.getElementById('selection').innerHTML = "I pick Rock"
+        selectionText = "I pick Rock"
     } else if (weapon === 1) {
-        document.getElementById('selection').innerHTML = "I pick Paper"
+        selectionText = "I pick Paper"
     } else {
-        document.getElementById('selection').innerHTML = "I pick Scissors"
-
+        selectionText = "I pick Scisssors"
     }
     return weapon
 }
@@ -34,7 +42,8 @@ function result() {
     let win = false
 
     if(mySelection === selection){
-        document.getElementById('result').innerHTML = "Tie!"
+        resultText = "Tie!"
+        ties ++
         return
     }
 
@@ -42,8 +51,18 @@ function result() {
     if ((mySelection + selection) === 2) {win = !win}
 
     if(win){
-        document.getElementById('result').innerHTML = "You Win!"
+        resultText = "You Win!"
+        wins ++
     } else {
-        document.getElementById('result').innerHTML = "I Win!"
+        resultText = "I Win!"
+        losses ++
     }
+}
+
+function updateScreen(){
+    document.getElementById('result').innerText = resultText
+    document.getElementById('selection').innerText = selectionText
+    document.getElementById('wins').innerText = wins
+    document.getElementById('losses').innerText = losses
+    document.getElementById('ties').innerText = ties
 }
